@@ -47,7 +47,7 @@
 #undef DEBUG_ERROR_BREAK
 #undef DEBUG_GRAPH_PRUNE
 #undef DEBUG_OPTIONS
-#undef DEBUG_RAM_USAGE
+#define DEBUG_RAM_USAGE
 #undef DEBUG_QLF
 #undef DEBUG_ENZ
 #undef DEBUG_GT4G
@@ -56,23 +56,30 @@
 #define ENOMEM_ERR 15
 #define ENOBND_ERR 14
 #define GB 0x40000000
-#define MAX_N_SEQ 45000
+#define MAX_N_SEQ 200000
 
-#ifndef DEBUG_GT4G
-static int ec_min_window = 1000000;
-static int ec_resolution = 10000;
-static int ec_bin = 1000;
-static int ec_move_avg = 0;
-static int ec_merge_thresh = 10000;
-static int ec_dual_break_thresh = 50000;
-#else
+//#ifndef DEBUG_GT4G
+//static int ec_min_window = 1000000;
+//static int ec_resolution = 10000;
+//static int ec_bin = 1000;
+//static int ec_move_avg = 0;
+//static int ec_merge_thresh = 10000;
+//static int ec_dual_break_thresh = 50000;
+//#else
 static int ec_min_window = 5000000;
 static int ec_resolution = 50000;
-static int ec_bin = 5000;
+static int ec_bin = 12500;
 static int ec_move_avg = 0;
 static int ec_merge_thresh = 50000;
 static int ec_dual_break_thresh = 250000;
-#endif
+
+//static int ec_min_window = 5000000;
+//static int ec_resolution = 100000;
+//static int ec_bin = 25000;
+//static int ec_move_avg = 0;
+//static int ec_merge_thresh = 100000;
+//static int ec_dual_break_thresh = 250000;
+//#endif
 static double ec_min_frac = .8;
 static double ec_fold_thresh = .2;
 static double max_noise_ratio = .1;
