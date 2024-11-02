@@ -67,10 +67,10 @@
 //static int ec_dual_break_thresh = 50000;
 //#else
 static int ec_min_window = 5000000;
-static int ec_resolution = 50000;
-static int ec_bin = 12500;
+static int ec_resolution = 100000;
+static int ec_bin = 25000;
 static int ec_move_avg = 0;
-static int ec_merge_thresh = 50000;
+static int ec_merge_thresh = 100000;
 static int ec_dual_break_thresh = 250000;
 
 //static int ec_min_window = 5000000;
