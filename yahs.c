@@ -669,29 +669,14 @@ static int default_nr(char *fai, uint32_t ml)
         genome_size += sdict->s[i].len;
     sd_destroy(sdict);
     
-    max_res = 0;
-    if (genome_size < 100000000)
-        max_res = 1000000;
-    else if (genome_size < 200000000)
-        max_res = 2000000;
-    else if (genome_size < 500000000)
-        max_res = 5000000;
-    else if (genome_size < 1000000000)
-        max_res = 10000000;
-    else if (genome_size < 2000000000)
-        max_res = 20000000;
-    else if (genome_size < 5000000000)
-        max_res = 50000000;
-    else if (genome_size < 10000000000)
-        max_res = 100000000;
-    else if (genome_size < 20000000000)
-        max_res = 200000000;
-    else
-        max_res = 500000000;
+    max_res = floor(genome_size/100);
 
     nr = 0;
-    while (nr < sizeof(default_resolutions) / sizeof(int) && default_resolutions[nr] <= max_res)
+    fprintf(stderr, "[I::%s] Genome size %d, Maximum resolution %d, will use resolutions:\n", __func__, genome_size, max_res);
+    while (nr < sizeof(default_resolutions) / sizeof(int) && default_resolutions[nr] <= max_res){
+        fprintf(stderr, "[I::%s] %d\n", __func__, default_resolutions[nr]);
         ++nr;
+    }
 
     return nr;
 }
