@@ -1,4 +1,5 @@
-# YaHS: yet another Hi-C scaffolding tool [![DOI](https://zenodo.org/badge/411044095.svg)](https://zenodo.org/badge/latestdoi/411044095)
+# YaHS: yet another Hi-C scaffolding tool [![DOI](https://zenodo.org/badge/411044095.svg)](https://zenodo.org/badge/latestdoi/411044095)]
+## with modifications by Aleksey Zimin
 
 ## Overview
 YaHS is a scaffolding tool using Hi-C data. It relies on a new algothrim for contig joining detection which considers the topological distribution of Hi-C signals aiming to distingush real interaction signals from mapping nosies. YaHS has been tested in a wide range of genome assemblies. Compared to other Hi-C scaffolding tools, it usually generates more contiguous scaffolds - especially with a higher N90 and L90 statistics. It is also super fast - takes less than 5 minutes to reconstruct the human genome from an assembly of 5,483 contigs with ~45X Hi-C data. See the [poster](https://drive.google.com/file/d/1jPhSi1k4ROGb1OSfKDurFIUvn-x1G6Kg/view?usp=sharing) presented in the [Bioversity Genemics 2021 conference](https://www.darwintreeoflife.org/news_item/biodiversity-genomics-2021-sequencing-genomes-across-the-planet/) for more information.
@@ -25,7 +26,7 @@ With `-o` option, you can specify the prefix of the output files. It is `./yash.
 
 With `-a` option, you can specify a AGP format file to ask YaHS to do scaffolding with the scaffolds in the AGP file as the start point.
 
-With `-r` option, you can specify a range of resultions (in ascending order). It is `10000,20000,50000,100000,200000,500000,1000000,2000000,5000000,10000000,20000000,50000000,100000000,200000000,500000000` by default and the upper limit is automatically adjusted by the genome size. For highly fragmented genome assemblies, you can try to start with higher resultions by adding smaller `-r` values.
+With `-r` option, you can specify a range of resultions (in ascending order). It is `10000, 20000, 40000, 80000, 160000, 320000, 640000, 1280000, 2560000, 5120000, 10240000, 20480000, 40960000, 81920000, 120000000, 163840000, 240000000,  327680000, 480000000` by default and the upper limit is automatically adjusted by the genome size. For highly fragmented genome assemblies, you can try to start with higher resultions by adding smaller `-r` values.
 
 With `-R` option, you can specify the number of rounds to run for each resolution level.
 
