@@ -601,7 +601,12 @@ int run_yahs(char *fai, char *agp, char *link_file, uint32_t ml, uint8_t mq, cha
         dict = make_asm_dict_from_agp(sdict, out_agp_break, 1);
         n50 = n_stats[4]; // old n50
         asm_sd_stats(dict, n_stats, l_stats);
-        // no improvements in a retry round 
+        // no improvements in a first round 
+        if (ex == max_extra_try && n50 == n_stats[4]){
+            fprintf(stderr, "[I::%s] assembly N50 (%lu) no longer increasing with increased resolution.\n", __func__, n_stats[4]);
+            break;
+        }
+        // no improvements in a retry round
         if (ex < max_extra_try && n50 == n_stats[4])
             ex = 0;
         print_asm_stats(n_stats, l_stats, 0);
@@ -655,7 +660,7 @@ int run_yahs(char *fai, char *agp, char *link_file, uint32_t ml, uint8_t mq, cha
 
 #ifndef DEBUG_GT4G
 //static int default_resolutions[15] = {10000, 20000, 50000, 100000, 200000, 500000, 1000000, 2000000, 5000000, 10000000, 20000000, 50000000, 100000000, 200000000, 500000000};
-static int default_resolutions[19] = {10000, 20000, 40000, 80000, 160000, 320000, 640000, 1280000, 2560000, 5120000, 10240000, 20480000, 40960000, 81920000, 120000000, 163840000, 240000000,  327680000, 480000000};
+static int default_resolutions[24] = {10000, 20000, 40000, 80000, 120000, 160000, 240000, 320000, 640000, 960000, 1280000, 1920000, 2560000, 5120000, 7680000, 10240000, 20480000, 40960000, 81920000, 120000000, 163840000, 240000000, 327680000, 480000000};
 #else
 static int default_resolutions[13] = {50000, 100000, 250000, 500000, 1000000, 2500000, 5000000, 10000000, 25000000, 50000000, 100000000, 250000000, 500000000};
 #endif
