@@ -66,7 +66,7 @@
 //static int ec_merge_thresh = 10000;
 //static int ec_dual_break_thresh = 50000;
 //#else
-static int ec_min_window = 5000000;
+static int ec_min_window = 4000000;
 static int ec_resolution = 100000;
 static int ec_bin = 25000;
 static int ec_move_avg = 0;
@@ -653,7 +653,8 @@ int run_yahs(char *fai, char *agp, char *link_file, uint32_t ml, uint8_t mq, cha
 }
 
 #ifndef DEBUG_GT4G
-static int default_resolutions[15] = {10000, 20000, 50000, 100000, 200000, 500000, 1000000, 2000000, 5000000, 10000000, 20000000, 50000000, 100000000, 200000000, 500000000};
+//static int default_resolutions[15] = {10000, 20000, 50000, 100000, 200000, 500000, 1000000, 2000000, 5000000, 10000000, 20000000, 50000000, 100000000, 200000000, 500000000};
+static int default_resolutions[19] = {10000, 20000, 40000, 80000, 160000, 320000, 640000, 1280000, 2560000, 5120000, 10240000, 20480000, 40960000, 81920000, 120000000, 163840000, 240000000,  327680000, 480000000}
 #else
 static int default_resolutions[13] = {50000, 100000, 250000, 500000, 1000000, 2500000, 5000000, 10000000, 25000000, 50000000, 100000000, 250000000, 500000000};
 #endif
