@@ -1,10 +1,11 @@
 #!/bin/bash
 function usage {
 echo 'This script converts bam file to pa5 file, removing PCR duplicates
-IMPOTRANT! The script assumes that alignment with bwa was run in paired mode with -SP, i.e. bwa mem <idxbase> -SP file_R1.fastq file_R2.fastq
+IMPORTANT! The script assumes that alignment with bwa was run in paired mode with -SP, i.e.:
+   bwa mem <idxbase> -SP file_R1.fastq file_R2.fastq
 bam file does not need to be sorted.
 
-Usage: samToPa5.sh [options]
+Usage: bamToPa5.sh [options]
 
 Options:
   -b string       BAM file
