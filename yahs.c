@@ -31,6 +31,7 @@
 #include <stdio.h>
 #include <assert.h>
 #include <ctype.h>
+#include <math.h>
 
 #include "ketopt.h"
 #include "kvec.h"
@@ -654,7 +655,7 @@ int run_yahs(char *fai, char *agp, char *link_file, uint32_t ml, uint8_t mq, cha
 
 #ifndef DEBUG_GT4G
 //static int default_resolutions[15] = {10000, 20000, 50000, 100000, 200000, 500000, 1000000, 2000000, 5000000, 10000000, 20000000, 50000000, 100000000, 200000000, 500000000};
-static int default_resolutions[19] = {10000, 20000, 40000, 80000, 160000, 320000, 640000, 1280000, 2560000, 5120000, 10240000, 20480000, 40960000, 81920000, 120000000, 163840000, 240000000,  327680000, 480000000}
+static int default_resolutions[19] = {10000, 20000, 40000, 80000, 160000, 320000, 640000, 1280000, 2560000, 5120000, 10240000, 20480000, 40960000, 81920000, 120000000, 163840000, 240000000,  327680000, 480000000};
 #else
 static int default_resolutions[13] = {50000, 100000, 250000, 500000, 1000000, 2500000, 5000000, 10000000, 25000000, 50000000, 100000000, 250000000, 500000000};
 #endif
@@ -672,7 +673,7 @@ static int default_nr(char *fai, uint32_t ml)
     max_res = floor(genome_size/100);
 
     nr = 0;
-    fprintf(stderr, "[I::%s] Genome size %d, Maximum resolution %d, will use resolutions:\n", __func__, genome_size, max_res);
+    fprintf(stderr, "[I::%s] Genome size %ld, Maximum resolution %d, will use resolutions:\n", __func__, genome_size, max_res);
     while (nr < sizeof(default_resolutions) / sizeof(int) && default_resolutions[nr] <= max_res){
         fprintf(stderr, "[I::%s] %d\n", __func__, default_resolutions[nr]);
         ++nr;
