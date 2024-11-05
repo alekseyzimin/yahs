@@ -458,7 +458,7 @@ static void print_asm_stats(uint64_t *n_stats, uint32_t *l_stats, int all)
 
 int run_yahs(char *fai, char *agp, char *link_file, uint32_t ml, uint8_t mq, char *out, int *resolutions, int nr, int rr, re_cuts_t *re_cuts, int8_t *telo_ends, uint32_t d_min_cell, double d_mass_frac, int no_contig_ec, int no_scaffold_ec, int no_mem_check)
 {
-    int ec_round, resolution, re, r, rn, rc, ex;
+    int ec_round, resolution, re, r, rn, rc, ex, presolution;
     uint64_t n50;
     char *out_fn, *out_agp, *out_agp_break;
     double noise;
@@ -534,7 +534,9 @@ int run_yahs(char *fai, char *agp, char *link_file, uint32_t ml, uint8_t mq, cha
     r = rc = 0;
     rn = rr;
     ex = max_extra_try;
+    resolution = 0;
     while (r < nr) {
+        presolution=resolution;
         resolution = resolutions[r];
 
         // dict = make_asm_dict_from_agp(sdict, out_agp_break, 1);
@@ -602,7 +604,7 @@ int run_yahs(char *fai, char *agp, char *link_file, uint32_t ml, uint8_t mq, cha
         n50 = n_stats[4]; // old n50
         asm_sd_stats(dict, n_stats, l_stats);
         // no improvements in a first round 
-        if (ex == max_extra_try && n50 == n_stats[4]){
+        if (presolution < resolution && n50 == n_stats[4]){
             fprintf(stderr, "[I::%s] assembly N50 (%lu) no longer increasing with increased resolution.\n", __func__, n_stats[4]);
             break;
         }
@@ -660,7 +662,7 @@ int run_yahs(char *fai, char *agp, char *link_file, uint32_t ml, uint8_t mq, cha
 
 #ifndef DEBUG_GT4G
 //static int default_resolutions[15] = {10000, 20000, 50000, 100000, 200000, 500000, 1000000, 2000000, 5000000, 10000000, 20000000, 50000000, 100000000, 200000000, 500000000};
-static int default_resolutions[24] = {10000, 20000, 40000, 80000, 120000, 160000, 240000, 320000, 640000, 960000, 1280000, 1920000, 2560000, 5120000, 7680000, 10240000, 20480000, 40960000, 81920000, 120000000, 163840000, 240000000, 327680000, 480000000};
+static int default_resolutions[25] = {10000, 20000, 40000, 80000, 120000, 160000, 240000, 320000, 480000, 640000, 960000, 1280000, 1920000, 2560000, 5120000, 7680000, 10240000, 20480000, 40960000, 81920000, 120000000, 163840000, 240000000, 327680000, 480000000};
 #else
 static int default_resolutions[13] = {50000, 100000, 250000, 500000, 1000000, 2500000, 5000000, 10000000, 25000000, 50000000, 100000000, 250000000, 500000000};
 #endif
