@@ -109,8 +109,7 @@ You can find more information about manual editing with Juicebox [here](https://
 
 ## Limitations
 * In rare cases, YaHS has been seen making telomere-to-telomere false joins.
-* YaHS can only handle up to 45,000 contigs. Consider excluding short contigs from scaffolding (with `-l` option) if the contig number exceeds this limit.
-* The memory consumption might be very high when the genome size is large and at the same time the contig number is large. In this case, consider starting from a lower resolution (larger `-r` values).
+* YaHS can only handle up to 200,000 contigs. Consider excluding short contigs from scaffolding (with `-l` option) if the contig number exceeds this limit.
 
 ## Citation
 
