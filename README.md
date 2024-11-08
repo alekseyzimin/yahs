@@ -26,7 +26,7 @@ With `-o` option, you can specify the prefix of the output files. It is `./yash.
 
 With `-a` option, you can specify a AGP format file to ask YaHS to do scaffolding with the scaffolds in the AGP file as the start point.
 
-With `-r` option, you can specify a range of resultions (in ascending order). It is `10000, 20000, 40000, 80000, 160000, 320000, 640000, 1280000, 2560000, 5120000, 10240000, 20480000, 40960000, 81920000, 120000000, 163840000, 240000000,  327680000, 480000000` by default and the upper limit is automatically adjusted by the genome size. For highly fragmented genome assemblies, you can try to start with higher resultions by adding smaller `-r` values.
+With `-r` option, you can specify a range of resultions (in ascending order). It is `10000, 20000, 40000, 80000, 120000, 160000, 240000, 320000, 480000, 640000, 960000, 1280000, 1920000, 2560000, 5120000, 7680000, 10240000, 20480000, 40960000, 81920000, 120000000, 163840000, 240000000, 327680000, 480000000` by default and the upper limit is automatically adjusted by the genome size. For highly fragmented genome assemblies, you can try to start with higher resultions by adding smaller `-r` values.
 
 With `-R` option, you can specify the number of rounds to run for each resolution level.
 
